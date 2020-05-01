@@ -40,7 +40,7 @@ function Form({ json }) {
       let id = event.target[index].id;
       const key = element.key;
 
-      while (id != key) {
+      while (id !== key) {
         index++;
         id = event.target[index].id;
       }
