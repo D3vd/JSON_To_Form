@@ -13,7 +13,7 @@ body {
   height: 100vh;
 }
 
-code {
+textarea {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }

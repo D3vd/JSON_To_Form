@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Input from "./components/Input";
+import Error from "./components/Error";
 
 function App() {
   const [json, setJson] = useState({
@@ -20,9 +21,25 @@ function App() {
     CGPA: "1-10",
   });
 
+  const [error, setError] = useState(false);
+  const [routeForm, setRouteForm] = useState(false);
+
   return (
     <div className="App">
-      <Input json={json} setJson={setJson} />
+      {!error ? (
+        !routeForm ? (
+          <Input
+            json={json}
+            setJson={setJson}
+            changeRoute={setRouteForm}
+            setError={setError}
+          />
+        ) : (
+          <h1>Test</h1>
+        )
+      ) : (
+        <Error />
+      )}
     </div>
   );
 }
