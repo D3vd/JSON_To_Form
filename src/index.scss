@@ -21,3 +21,24 @@ textarea {
 .App {
   padding: 2rem calc((100vw - 900px - 0.5rem) / 2);
 }
+
+.error {
+  text-align: center;
+  background-color: #fff;
+  padding: 5rem 2rem;
+
+  button {
+    border: none;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background-color: antiquewhite;
+    border-radius: 2rem;
+    margin-top: 2rem;
+    font-weight: 600;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
