@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import ParseElement from "./parse";
+import Result from "./result";
 
 import styles from "./form.module.scss";
 
@@ -18,6 +19,7 @@ function Form({ json }) {
     delete json["Title"];
     delete json["Sub Title"];
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     elements = [];
     for (let key in json) {
       elements.push({
@@ -51,7 +53,7 @@ function Form({ json }) {
     setInputJSON(inputJSON);
   };
 
-  return (
+  return Object.keys(inputJSON).length === 0 ? (
     <div className={styles.container}>
       <h1>{title}</h1>
       <h2>{subTitle}</h2>
@@ -60,6 +62,8 @@ function Form({ json }) {
         <input className={styles.submit} type="submit" value="Submit" />
       </form>
     </div>
+  ) : (
+    <Result json={inputJSON} />
   );
 }
 
