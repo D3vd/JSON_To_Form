@@ -48,7 +48,7 @@ const ParseElement = ({ key, value }) => {
         <label htmlFor={key}>{key}</label>
         {options.map((option) => (
           <div className={styles.radio} key={option}>
-            <input type="radio" name={key} id={option} />
+            <input type="radio" name={key} id={option} required />
             <label htmlFor={option}>{option}</label>
           </div>
         ))}
@@ -59,7 +59,58 @@ const ParseElement = ({ key, value }) => {
     return (
       <div className={styles.item}>
         <label htmlFor={key}>{key}</label>
-        <input type="color" name={key} />
+        <input type="color" name={key} required />
+      </div>
+    );
+  } else if (value.match(/file /g)) {
+    // Check for File
+    let fileType = value.split(" ")[2].slice(0, -1);
+
+    return (
+      <div className={styles.item}>
+        <label htmlFor={key}>{key}</label>
+        <input type="file" accept={`image/${fileType}`} required />
+      </div>
+    );
+  } else if (value.match(/(?:[01]\d|2[0123]):(?:[012345]\d) (AM|PM)/g)) {
+    // Check for time
+    return (
+      <div className={styles.item}>
+        <label htmlFor={key}>{key}</label>
+        <input type="time" name={key} required />
+      </div>
+    );
+  } else if (value.match(/\S+@\S+\.\S+/g)) {
+    // Check for email
+    return (
+      <div className={styles.item}>
+        <label htmlFor={key}>{key}</label>
+        <input type="email" name={key} required />
+      </div>
+    );
+  } else if (value.match(/URL|url/g)) {
+    // Check for URL
+    return (
+      <div className={styles.item}>
+        <label htmlFor={key}>{key}</label>
+        <input type="url" name={key} required />
+      </div>
+    );
+  } else if (value.match(/^([0-9]*)-([0-9]*)$/g)) {
+    // Check for Range
+    let range = value.split("-");
+
+    return (
+      <div className={styles.item}>
+        <label htmlFor={key}>{key}</label>
+        <input type="range" name={key} min={range[0]} max={range[1]} required />
+      </div>
+    );
+  } else {
+    return (
+      <div className={styles.item}>
+        <label htmlFor={key}>{key}</label>
+        <input type="text" name={key} required />
       </div>
     );
   }
