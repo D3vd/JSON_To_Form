@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import Input from "./components/Input";
 import Error from "./components/Error";
+import Form from "./components/Form";
 
 function App() {
   const [json, setJson] = useState({
@@ -35,7 +36,7 @@ function App() {
             setError={setError}
           />
         ) : (
-          <h1>Test</h1>
+          <Form json={json} setError={setError} />
         )
       ) : (
         <Error />
