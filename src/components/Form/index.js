@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import ParseElement from "./parse";
+
 import styles from "./form.module.scss";
 
 function Form({ json }) {
@@ -21,9 +23,7 @@ function Form({ json }) {
     <div className={styles.container}>
       <form>
         {elements.map((element, index) => (
-          <div key={index} className={styles.item}>
-            {element.key}
-          </div>
+          <div key={index}>{ParseElement(element)}</div>
         ))}
       </form>
     </div>
