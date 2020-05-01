@@ -35,8 +35,15 @@ function Form({ json }) {
     let inputJSON = {};
 
     elements.forEach((element, index) => {
-      const input = event.target[index].value;
+      let id = event.target[index].id;
       const key = element.key;
+
+      while (id != key) {
+        index++;
+        id = event.target[index].id;
+      }
+
+      const input = event.target[index].value;
 
       inputJSON[key] = input;
     });

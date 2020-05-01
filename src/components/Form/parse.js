@@ -48,7 +48,7 @@ const ParseElement = ({ key, value }) => {
         <label htmlFor={key}>{key}</label>
         {options.map((option) => (
           <div className={styles.radio} key={option}>
-            <input type="radio" name={key} id={option} required />
+            <input type="radio" name={key} id={key} required />
             <label htmlFor={option}>{option}</label>
           </div>
         ))}
